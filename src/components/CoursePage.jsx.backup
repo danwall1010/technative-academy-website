@@ -1,0 +1,1833 @@
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
+import HubSpotForm from './HubSpotForm'
+import techNativeAcademyLogo from '../assets/customcolor_logo_transparent_background.png'
+
+const CoursePage = () => {
+  const { courseId } = useParams()
+  
+  // Debug logging
+  console.log('CoursePage rendered with courseId:', courseId)
+  console.log('URL pathname:', window.location.pathname)
+  console.log('URL hash:', window.location.hash)
+  
+  // Course data mapping
+  const courses = {
+    'software-development': {
+      title: 'Software Development - Tech Finishing School',
+      headline: 'Software Development - Tech Finishing School: Your Launchpad Into a Tech Career',
+      description: 'Our Software Development Bootcamp is a 12-week intensive programme designed for aspiring junior developers who already know the basics, but are "stuck at the start." Whether you\'re a self-taught coder, computer science grad, or career changer with some experience, this bootcamp will help you sharpen your skills, build confidence, and get hired.',
+      duration: '12 weeks',
+      format: 'Hybrid (in-person + online)',
+      location: 'West Sussex',
+      funding: 'Funded through the West Sussex County Council Skills Bootcamp initiative',
+      heroImage: '/src/assets/AdobeStock_399047633(1).jpeg',
+      partnerLogos: ['West Sussex County Council', 'Local Tech Companies'],
+      curriculum: {
+        technical: [
+          'Full-stack web development using modern frameworks',
+          'JavaScript, React, Node.js, and database management',
+          'Version control with Git and collaborative development',
+          'Testing, debugging, and deployment strategies',
+          'Agile methodologies and project management'
+        ],
+        professional: [
+          'Industry-standard development workflows',
+          'Code review and pair programming practices',
+          'Client communication and requirement gathering',
+          'Professional portfolio development',
+          'Interview preparation and technical assessments'
+        ],
+        projects: [
+          'Real-world client projects with local businesses',
+          'Capstone project showcasing full-stack capabilities',
+          'Collaborative team projects using Agile methodologies',
+          'Open-source contributions and GitHub portfolio building'
+        ]
+      },
+      careerPaths: [
+        'Junior Full-Stack Developer',
+        'Frontend Developer',
+        'Backend Developer',
+        'Web Application Developer',
+        'Software Engineer'
+      ],
+      targetLearners: [
+        'Career changers seeking entry into tech',
+        'Recent graduates looking to enhance their skills',
+        'Professionals wanting to transition to development roles',
+        'Individuals with basic coding knowledge seeking structured learning',
+        'Those interested in building web applications and software solutions'
+      ],
+      successMetrics: {
+        employmentRate: '88%',
+        averageSalary: '£26,000',
+        partnerCompanies: '25+',
+        graduatesPlaced: '150+'
+      }
+    },
+    'east-sussex-data-analytics': {
+      title: 'East Sussex Data Analytics Bootcamp',
+      headline: 'Transform Data into Insights: Master Analytics, Drive Business Decisions.',
+      description: 'The East Sussex Data Analytics Bootcamp is designed for professionals looking to harness the power of data. This comprehensive program covers everything from data collection and cleaning to advanced analytics and visualization, preparing you for high-demand roles in the data-driven economy.',
+      duration: '12 weeks',
+      format: 'Part-time',
+      location: 'East Sussex',
+      funding: 'Skills Bootcamp funding available',
+      heroImage: '/src/assets/AdobeStock_597637171.jpeg',
+      partnerLogos: ['East Sussex County Council', 'Local Businesses'],
+      curriculum: {
+        technical: [
+          'Python programming for data analysis',
+          'SQL database querying and management',
+          'Data visualization with Power BI and Tableau',
+          'Statistical analysis and machine learning basics',
+          'Excel advanced functions and pivot tables'
+        ],
+        professional: [
+          'Business intelligence and reporting',
+          'Data storytelling and presentation skills',
+          'Project management for data initiatives',
+          'Stakeholder communication and requirements gathering',
+          'Ethics in data analysis and privacy considerations'
+        ],
+        projects: [
+          'Real business data analysis projects',
+          'Interactive dashboard creation',
+          'Predictive modeling for business outcomes',
+          'Data cleaning and preparation workflows'
+        ]
+      },
+      careerPaths: [
+        'Data Analyst',
+        'Business Intelligence Analyst',
+        'Data Visualization Specialist',
+        'Junior Data Scientist',
+        'Business Analyst'
+      ],
+      targetLearners: [
+        'Professionals working with spreadsheets daily',
+        'Business professionals seeking data skills',
+        'Career changers interested in analytics',
+        'Recent graduates with analytical mindsets',
+        'Those wanting to make data-driven decisions'
+      ],
+      successMetrics: {
+        employmentRate: '82%',
+        averageSalary: '£28,000',
+        partnerCompanies: '20+',
+        graduatesPlaced: '120+'
+      }
+    },
+    'artificial-intelligence': {
+      title: 'Artificial Intelligence for Business Bootcamp',
+      headline: 'Harness the Power of AI: Drive Productivity and Innovation in Your Career.',
+      description: 'The TechNative AI for Business Bootcamp is designed to help adult learners build practical, ethical, and commercially relevant skills in the use of generative AI and automation tools. It aims to drive productivity and growth for SMEs, freelancers, and individuals in or seeking employment by helping them harness AI to solve real-world challenges.',
+      duration: '12 weeks',
+      format: 'Hybrid (live online + asynchronous)',
+      location: 'West Sussex or neighboring LEP areas',
+      funding: 'Commissioned under West Sussex County Council\'s Bootcamp commissioning',
+      heroImage: '/AdobeStock_597637171.jpeg',
+      partnerLogos: ['West Sussex County Council', 'AI Potential'],
+      curriculum: {
+        technical: [
+          'Generative AI tools and platforms',
+          'Automation workflows and integration',
+          'AI-powered content creation and editing',
+          'Machine learning basics for business applications',
+          'AI ethics and responsible implementation'
+        ],
+        professional: [
+          'AI strategy development for businesses',
+          'Change management for AI adoption',
+          'ROI measurement for AI initiatives',
+          'Client consultation on AI solutions',
+          'Future-proofing careers with AI skills'
+        ],
+        projects: [
+          'AI-powered business process automation',
+          'Content creation using generative AI',
+          'Customer service chatbot development',
+          'Data analysis using AI tools'
+        ]
+      },
+      careerPaths: [
+        'AI Implementation Specialist',
+        'Business Process Automation Consultant',
+        'AI Content Creator',
+        'Digital Transformation Specialist',
+        'AI Ethics Advisor'
+      ],
+      targetLearners: [
+        'Professionals in non-technical roles seeking AI literacy',
+        'Freelancers and consultants wanting to enhance services',
+        'Small business owners looking to implement AI',
+        'Career changers exploring tech-adjacent roles',
+        'Individuals building AI-enabled side businesses'
+      ],
+      industryOutlook: {
+        marketGrowth: 'UK AI market projected to reach £16.9 billion by 2030, with AI adoption in business growing at 25% annually',
+        salaryRange: '£45,000 - £75,000 for AI business roles',
+        salaryIncrease: '20-30% higher wages for AI-skilled professionals, with significant career advancement opportunities',
+        keyApplications: [
+          'Business Process Automation: Streamlining operations and reducing manual tasks',
+          'Customer Experience: AI chatbots, personalization, and predictive analytics',
+          'Data-Driven Decision Making: Business intelligence and automated reporting'
+        ],
+        essentialSkills: [
+          'AI Strategy: Understanding AI capabilities and business applications',
+          'Process Analysis: Identifying automation opportunities and workflow optimization',
+          'Data Literacy: Basic analytics and AI tool implementation',
+          'Change Management: Leading AI adoption and team transformation'
+        ],
+        leadingCompanies: [
+          'AI Potential',
+          'Brighton AI',
+          'Local SMEs implementing AI solutions',
+          'Digital transformation consultancies',
+          'Tech startups in Sussex',
+          'Brighton-based innovation companies'
+        ],
+        futureOpportunities: [
+          'AI Implementation Consultant roles',
+          'Business Process Automation specialist positions',
+          'AI Ethics and Governance roles',
+          'Digital Transformation leadership opportunities'
+        ]
+      },
+      successMetrics: {
+        employmentRate: '90%',
+        averageSalary: '£55,000',
+        partnerCompanies: '25+',
+        graduatesPlaced: '95+'
+      }
+    },
+    'aimi-ai-video-production': {
+      title: 'AIMI AI Video Production Bootcamp',
+      headline: 'Create Cutting-Edge Content: Master AI-Powered Video Production.',
+      description: 'Partner with AIMI to learn the latest in AI-powered video production. This innovative bootcamp combines traditional video production skills with cutting-edge AI tools, preparing you for the future of content creation in the digital media landscape.',
+      duration: '12 weeks',
+      format: 'Remote-first',
+      location: 'Brighton',
+      funding: 'Industry partnership funding',
+      heroImage: '/src/assets/AdobeStock_592594834.jpeg',
+      partnerLogos: ['AIMI', 'Amazon', 'Media Partners'],
+      curriculum: {
+        technical: [
+          'AI-powered video editing and production tools',
+          'Automated content generation and optimization',
+          'Machine learning for video analytics',
+          'Cloud-based production workflows',
+          'Integration of AI tools in traditional video pipelines'
+        ],
+        professional: [
+          'Creative brief interpretation and execution',
+          'Client communication for video projects',
+          'Project management for video production',
+          'Brand storytelling through video',
+          'Industry trends and emerging technologies'
+        ],
+        projects: [
+          'Live briefs from Amazon and media clients',
+          'AI-enhanced promotional videos',
+          'Automated video content series',
+          'Interactive video experiences'
+        ]
+      },
+      careerPaths: [
+        'AI Video Producer',
+        'Content Creation Specialist',
+        'Digital Media Technologist',
+        'Video Production Coordinator',
+        'Creative Technology Consultant'
+      ],
+      targetLearners: [
+        'Creative professionals wanting to embrace AI',
+        'Video editors seeking advanced skills',
+        'Content creators looking to scale production',
+        'Marketing professionals needing video skills',
+        'Freelancers wanting to offer AI-enhanced services'
+      ],
+      industryOutlook: {
+        marketGrowth: 'UK AI video market projected to reach USD 2,050.9 million by 2030, growing at 35% CAGR',
+        globalMarket: 'AI in video production market expected to reach USD 2,207.320 million by 2030, with 23.03% CAGR',
+        platformGrowth: 'AI video generation platform market projected to grow to USD 6.5 billion by 2033',
+        salaryRange: '£65,000 - £68,000 for AI-related roles',
+        salaryIncrease: '14-23% higher wages compared to non-AI roles, with 35% increases for tech workers transitioning to AI',
+        keyApplications: [
+          'Marketing & Advertising: Personalization and targeting of video content, programmatic advertising automation',
+          'Streaming & Broadcast: Content recommendations, automated ad insertion, quality control and compliance',
+          'Content Creation: Real-time personalization, automated production workflows, enhanced viewer engagement'
+        ],
+        essentialSkills: [
+          'Programming: Python, R, TensorFlow, PyTorch',
+          'Core AI Skills: Machine learning, deep learning, natural language processing',
+          'Video Production: Industry-standard editing software, AI-powered production tools, scriptwriting and storyboarding',
+          'Data Analysis: Data visualization, analytics interpretation, performance metrics'
+        ],
+        trainingPathways: [
+          'Academic: Degrees in computer science, data science qualifications, specialized AI programs',
+          'Professional Development: Industry certifications, online courses (Coursera, edX), specialized AI video production training'
+        ],
+        industryTrends: [
+          'Technological Integration: Automated production workflows, real-time analytics, enhanced viewer engagement',
+          'Content Personalization: AI-driven recommendations, dynamic content adjustment, interactive features'
+        ],
+        leadingCompanies: [
+          'Lucid Reality Labs',
+          'Synergy Labs',
+          'Imobisoft',
+          'Passionate Agency',
+          'Atomic Build',
+          'Systango Technologies'
+        ],
+        futureOpportunities: [
+          'Emerging Sectors: Educational content, corporate training, virtual events, interactive media',
+          'Growth Areas: Personalized video content, real-time video generation, AI-powered editing tools, automated content creation'
+        ],
+        industryConsiderations: [
+          'Growing need for ethical AI implementation',
+          'Increasing focus on content regulation',
+          'Rising demand for transparency in AI-generated content',
+          'Importance of addressing deepfake concerns'
+        ]
+      },
+      successMetrics: {
+        employmentRate: '90%',
+        averageSalary: '£65,000',
+        partnerCompanies: '12+',
+        graduatesPlaced: '60+'
+      }
+    },
+    'latest-tv-video-production': {
+      title: 'Digital Video - Streaming and Marketing Content Production',
+      headline: 'Create Content That Connects: Video Skills for Social, Streaming & Marketing',
+      description: 'Master the art of video storytelling, from concept to edit, in this hands-on, studio-based bootcamp. Learn how to plan, shoot, and edit professional-quality content for YouTube, TikTok, Instagram and client campaigns.',
+      longDescription: 'This immersive 12-week course is designed for aspiring content creators, digital marketers, and creatives who want to produce standout video for online platforms. You\'ll learn the full production workflow — from scripting and storyboarding to shooting and editing — using professional cameras, sound and lighting equipment at Latest TV\'s Brighton based studio. You\'ll create real projects designed for marketing, promo, interviews, and online campaigns — and gain the confidence to pitch your ideas, collaborate in a team, and deliver high-quality content under deadlines. As part of the bootcamp, your work will also be reviewed by Latest TV\'s editorial team and may be selected for inclusion in their broadcast schedule. Exceptional learners could be invited to work further with the studio team on live commissions.',
+      duration: '12 weeks',
+      format: 'In-person',
+      location: 'Worthing',
+      funding: 'Industry partnership with Latest TV',
+      heroImage: '/src/assets/AdobeStock_354012917(1).jpeg',
+      partnerLogos: ['Latest TV', 'Broadcasting Partners'],
+      curriculum: {
+        technical: [
+          'Video production workflow from concept to delivery',
+          'Professional camera operation and cinematography',
+          'Audio recording and sound design techniques',
+          'Lighting setup for studio and location shoots',
+          'Video editing using industry-standard software',
+          'Content optimization for social media platforms'
+        ],
+        professional: [
+          'Content strategy and planning for digital platforms',
+          'Scriptwriting and storyboarding techniques',
+          'Client brief interpretation and project management',
+          'Team collaboration in creative environments',
+          'Pitching ideas and presenting concepts',
+          'Meeting deadlines in fast-paced production schedules'
+        ],
+        projects: [
+          'YouTube channel content creation',
+          'Social media marketing campaigns',
+          'Client promotional videos',
+          'Interview and testimonial production',
+          'Live streaming and broadcast content',
+          'Portfolio development for Latest TV review'
+        ]
+      },
+      careerPaths: [
+        'Content Creator',
+        'Video Producer',
+        'Social Media Video Specialist',
+        'Digital Marketing Video Producer',
+        'YouTube Channel Manager',
+        'Video Production Specialist'
+      ],
+      targetLearners: [
+        'Aspiring content creators and digital marketers',
+        'Creative individuals interested in social media production',
+        'Marketing professionals wanting video skills',
+        'Career changers seeking creative digital roles',
+        'Entrepreneurs looking to create engaging content',
+        'Students interested in modern video production'
+      ],
+      successMetrics: {
+        employmentRate: '90%',
+        averageSalary: '£37,080',
+        partnerCompanies: '25+',
+        graduatesPlaced: '95+'
+      },
+      industryOutlook: {
+        marketSize: 'UK video production market valued at USD 5.8 billion (2023)',
+        growth: 'Projected 27.53% CAGR until 2033, reaching USD 66.1 billion',
+        salaryRanges: {
+          entryLevel: '£20,000 - £25,000',
+          midLevel: '£37,080 average',
+          senior: '£79,900 - £136,500',
+          management: '£57,500 - £108,250'
+        },
+        keyTrends: [
+          '94% of UK adults use YouTube (49 minutes daily average)',
+          'Young adults (18-24) spend over 6 hours daily online',
+          'Social media is primary news source for 50% of Gen Z',
+          'Strong shift towards streaming services and mobile content'
+        ],
+        majorEmployers: [
+          'BBC Studios - "Doctor Who", "Sherlock"',
+          'ITV Studios - "Love Island", "Line of Duty"',
+          'Fremantle - "Got Talent" series',
+          'Little Dot Studios - Digital video specialists',
+          'Moonbug Entertainment - Digital-first media'
+        ],
+        skillsInDemand: [
+          'Combined technical and soft skills',
+          'Data analysis capabilities',
+          'Digital marketing expertise',
+          'Adaptability to evolving technology',
+          'Cross-functional skills across different areas'
+        ]
+      }
+    },
+    '1st-central-data-analytics': {
+      title: '1st Central Data Analytics Bootcamp',
+      headline: 'Upgrade Reports to Revenue: Enhanced Data Skills for 1st Central.',
+      description: 'An internal Continuing Professional Development (CPD) program specifically designed for 1st Central staff. This bootcamp focuses on enhancing data analysis capabilities to drive business value and improve decision-making processes within the organization.',
+      duration: 'CPD Program',
+      format: 'Internal',
+      location: '1st Central',
+      funding: 'Corporate training investment',
+      heroImage: '/src/assets/AdobeStock_601346981.jpeg',
+      partnerLogos: ['1st Central'],
+      curriculum: {
+        technical: [
+          'Advanced Excel and data manipulation',
+          'Business intelligence tools and dashboards',
+          'Data visualization for executive reporting',
+          'Predictive analytics for business forecasting',
+          'Database querying and data extraction'
+        ],
+        professional: [
+          'Strategic data analysis for business decisions',
+          'Executive presentation and reporting',
+          'Cross-departmental data collaboration',
+          'Process improvement through data insights',
+          'Change management for data-driven culture'
+        ],
+        projects: [
+          'Revenue optimization analysis',
+          'Customer behavior and retention studies',
+          'Operational efficiency improvements',
+          'Risk assessment and mitigation strategies'
+        ]
+      },
+      careerPaths: [
+        'Senior Data Analyst',
+        'Business Intelligence Manager',
+        'Data Strategy Consultant',
+        'Analytics Team Lead',
+        'Chief Data Officer'
+      ],
+      targetLearners: [
+        '1st Central employees seeking data skills',
+        'Managers wanting data-driven insights',
+        'Analysts looking to advance capabilities',
+        'Cross-functional teams needing data literacy',
+        'Leadership seeking strategic data understanding'
+      ],
+      successMetrics: {
+        employmentRate: '100%',
+        averageSalary: 'Internal progression',
+        partnerCompanies: '1st Central',
+        graduatesPlaced: '45+'
+      }
+    }
+  }
+
+  const course = courses[courseId]
+
+  // Get SEO data for the current course
+  const getSEOData = (courseId, course) => {
+    const baseUrl = 'https://jyvuvxcy.manus.space'
+    
+    const seoData = {
+      'software-development': {
+        title: 'Software Development Bootcamp West Sussex | TechNative Academy Brighton',
+        description: 'Join our 12-week software development bootcamp in West Sussex. Learn React, Node.js, PostgreSQL with industry experts. Fully funded places available. Apply now!',
+        keywords: 'software development bootcamp West Sussex, coding course Brighton, programming training Sussex, React bootcamp, full stack developer course',
+        canonical: `${baseUrl}/course/software-development`,
+        ogImage: `${baseUrl}/AdobeStock_730088131.jpeg`
+      },
+      'east-sussex-data-analytics': {
+        title: 'Data Analytics Bootcamp East Sussex | TechNative Academy Brighton',
+        description: 'Master data analytics with Python, SQL, Tableau in our 12-week East Sussex bootcamp. Partner with Datacove. Fully funded places available.',
+        keywords: 'data analytics bootcamp East Sussex, data science course Brighton, Python SQL training Sussex, Tableau Power BI course',
+        canonical: `${baseUrl}/course/east-sussex-data-analytics`,
+        ogImage: `${baseUrl}/AdobeStock_597637171.jpeg`
+      },
+      'artificial-intelligence': {
+        title: 'AI for Business Bootcamp Brighton | TechNative Academy Sussex',
+        description: 'Learn AI and machine learning for business applications. 12-week bootcamp across Brighton & Sussex. Partner with AI Potential. Apply now!',
+        keywords: 'AI bootcamp Brighton, artificial intelligence course Sussex, machine learning training, AI for business, AI Potential partnership',
+        canonical: `${baseUrl}/course/artificial-intelligence`,
+        ogImage: `${baseUrl}/AdobeStock_817016553.jpeg`
+      },
+      'aimi-ai-video-production': {
+        title: 'AI Video Production Bootcamp Brighton | AIMI Partnership TechNative',
+        description: 'Master AI video production with industry expert Duncan Thomsen. 12-week bootcamp in Brighton creative quarter. AIMI partnership.',
+        keywords: 'AI video production bootcamp Brighton, video editing course Sussex, AI video tools training, AIMI partnership, Duncan Thomsen',
+        canonical: `${baseUrl}/course/aimi-ai-video-production`,
+        ogImage: `${baseUrl}/AdobeStock_508464473.jpeg`
+      },
+      'studio-video-production': {
+        title: 'Studio Video Production Bootcamp Brighton | Latest TV Partnership',
+        description: 'Professional video production training in real TV studio. 12-week bootcamp with Latest TV partnership in Brighton. Apply now!',
+        keywords: 'video production bootcamp Brighton, TV studio training Sussex, Latest TV partnership, video editing course, broadcast training',
+        canonical: `${baseUrl}/course/studio-video-production`,
+        ogImage: `${baseUrl}/AdobeStock_629572803.jpeg`
+      }
+    }
+    
+    return seoData[courseId] || {
+      title: `${course.title} | TechNative Academy Brighton`,
+      description: course.description.substring(0, 160),
+      keywords: 'tech bootcamp Brighton, digital skills training Sussex',
+      canonical: `${baseUrl}/course/${courseId}`,
+      ogImage: `${baseUrl}/assets/TechNativeDigitalblacktextlogo-BMvHAiPM.png`
+    }
+  }
+
+  const seo = getSEOData(courseId, course)
+
+  if (!course) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Course Not Found</h1>
+          <p className="text-gray-600 mb-8">The course you're looking for doesn't exist.</p>
+          <Link to="/" className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+            Back to Home
+          </Link>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <>
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <meta name="keywords" content={seo.keywords} />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href={seo.canonical} />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={seo.canonical} />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:image" content={seo.ogImage} />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={seo.canonical} />
+        <meta property="twitter:title" content={seo.title} />
+        <meta property="twitter:description" content={seo.description} />
+        <meta property="twitter:image" content={seo.ogImage} />
+        
+        {/* Additional SEO Meta Tags */}
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="TechNative Academy" />
+        <meta name="geo.region" content="GB-ESX" />
+        <meta name="geo.placename" content="Brighton, East Sussex, West Sussex" />
+        
+        {/* Course-specific structured data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": course.title,
+            "description": course.description,
+            "provider": {
+              "@type": "EducationalOrganization",
+              "name": "TechNative Academy",
+              "url": "https://jyvuvxcy.manus.space"
+            },
+            "courseMode": "online",
+            "duration": course.duration,
+            "location": {
+              "@type": "Place",
+              "name": course.location,
+              "address": {
+                "@type": "PostalAddress",
+                "addressRegion": course.location,
+                "addressCountry": "GB"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "GBP",
+              "description": "Fully funded for eligible learners"
+            },
+            "educationalLevel": "Beginner to Intermediate",
+            "teaches": course.curriculum.technical,
+            "url": seo.canonical
+          })}
+        </script>
+      </Helmet>
+      
+      <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-br from-blue-900 via-purple-900 to-pink-800 text-white overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: courseId === 'software-development' 
+              ? `url('/AdobeStock_730088131.jpeg')`
+              : courseId === 'east-sussex-data-analytics'
+              ? `url('/image.png')`
+              : `url('${course.heroImage}')`,
+            backgroundPosition: 'center right'
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-purple-900/80 to-transparent"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-left max-w-3xl">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              {course.headline}
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 text-blue-100">
+              {course.description}
+            </p>
+            <div className="flex flex-wrap gap-4 mb-8">
+              <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium">
+                📅 {course.duration}
+              </span>
+              <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium">
+                💻 {course.format}
+              </span>
+              <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium">
+                📍 {course.location}
+              </span>
+              <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium">
+                💰 {course.funding}
+              </span>
+            </div>
+            <button 
+              onClick={() => document.getElementById('hubspot-form-container').scrollIntoView({ behavior: 'smooth' })}
+              className="inline-block bg-gradient-to-r from-yellow-400 to-pink-500 text-black px-8 py-4 rounded-full text-lg font-bold hover:from-yellow-300 hover:to-pink-400 transition-all duration-200 transform hover:scale-105"
+            >
+              Apply Now - It's Free for those who work or live in West Sussex
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* TechNative Academy Section */}
+      <div className="py-12 bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <img 
+              src={techNativeAcademyLogo} 
+              alt="TechNative Academy - New Tech Talent / Future Leaders" 
+              className="h-16 w-auto mx-auto mb-4"
+            />
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              This bootcamp is part of the <strong>TechNative Academy</strong> offer - our comprehensive ecosystem 
+              of employer-led training programmes designed to create the next generation of tech talent.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Course Overview */}
+      <div className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Course Overview</h2>
+            <p className="text-xl text-gray-600">Everything you need to know about this bootcamp</p>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* What You'll Learn */}
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">What You'll Learn</h3>
+              
+              <div className="mb-8">
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">Technical Skills</h4>
+                <ul className="space-y-2">
+                  {course.curriculum.technical.map((skill, index) => (
+                    <li key={index} className="flex items-start">
+                      <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-gray-700">{skill}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">Professional Skills</h4>
+                <ul className="space-y-2">
+                  {course.curriculum.professional.map((skill, index) => (
+                    <li key={index} className="flex items-start">
+                      <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-gray-700">{skill}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Course Overview Video */}
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Course Deep Dive</h3>
+              {courseId === 'software-development' ? (
+                <div className="rounded-lg aspect-video mb-4 overflow-hidden shadow-lg">
+                  <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube.com/embed/RLAX-eJwtVs" 
+                    title="Course Overview Video - Pete and Duncan discuss the Software Development Bootcamp"
+                    frameBorder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowFullScreen
+                    className="w-full h-full"
+                  ></iframe>
+                </div>
+              ) : (
+                <div className="bg-gray-200 rounded-lg aspect-video flex items-center justify-center mb-4">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <p className="text-gray-600 font-medium">Course Overview Video</p>
+                    <p className="text-gray-500 text-sm">Coming Soon</p>
+                  </div>
+                </div>
+              )}
+              <p className="text-gray-600">
+                {courseId === 'software-development' 
+                  ? "Get an in-depth look at the curriculum, learning methodology, and what makes this bootcamp unique. Hear directly from our instructors about the hands-on approach and real-world projects you'll work on."
+                  : "Course overview video coming soon! In the meantime, explore the detailed curriculum and career prospects below."
+                }
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Real-World Projects */}
+      <div className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Real-World Projects</h2>
+            <p className="text-xl text-gray-600">Build your portfolio with meaningful work</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {course.curriculum.projects.map((project, index) => (
+              <div key={index} className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+                <p className="text-gray-700 font-medium">{project}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Career Progression Routes */}
+      <div className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Career Progression Routes</h2>
+            <p className="text-xl text-gray-600">Discover where this bootcamp can take your career</p>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Career Paths */}
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Potential Career Paths</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                {course.careerPaths.map((path, index) => (
+                  <div key={index} className="bg-white p-4 rounded-lg shadow-sm border">
+                    <h4 className="font-semibold text-gray-900">{path}</h4>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Industry Outlook & Career Prospects */}
+              <div className="mt-8 bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-lg border border-blue-100">
+                <h4 className="font-semibold text-blue-900 mb-4 flex items-center">
+                  <span className="mr-2">📈</span>
+                  Industry Outlook & Career Prospects
+                </h4>
+                
+                <div className="space-y-4">
+                  {/* Software Development Career Data */}
+                  {courseId === 'software-development' && (
+                    <>
+                      {/* Key Highlight */}
+                      <div className="bg-white/70 p-4 rounded-lg border border-blue-200">
+                        <h5 className="font-bold text-purple-800 text-lg mb-2">
+                          🎯 High-Growth Software Development Market
+                        </h5>
+                        <p className="text-gray-700 text-sm">
+                          UK tech industry projected to grow to USD 2.80 trillion by 2033 with 7.60% CAGR
+                        </p>
+                      </div>
+                      
+                      {/* Salary Info */}
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="text-center bg-white/50 p-3 rounded-lg">
+                          <div className="text-xl font-bold text-green-600">£48,901</div>
+                          <div className="text-xs text-gray-600">UK Average Developer Salary</div>
+                        </div>
+                        <div className="text-center bg-white/50 p-3 rounded-lg">
+                          <div className="text-xl font-bold text-green-600">£100k+</div>
+                          <div className="text-xs text-gray-600">Senior Developer Roles</div>
+                        </div>
+                      </div>
+                      
+                      {/* Industry Growth */}
+                      <div className="bg-white/70 p-3 rounded-lg">
+                        <h6 className="font-semibold text-purple-800 text-sm mb-2">🚀 Industry Growth</h6>
+                        <ul className="text-xs text-gray-700 space-y-1">
+                          <li>• UK tech sector attracted £24 billion investment in 2022</li>
+                          <li>• Software professionals doubled from 209,000 to 418,000</li>
+                          <li>• 93% of UK businesses report shortage of qualified tech candidates</li>
+                        </ul>
+                      </div>
+                      
+                      {/* In-Demand Skills */}
+                      <div className="bg-white/70 p-3 rounded-lg">
+                        <h6 className="font-semibold text-purple-800 text-sm mb-2">🔥 Most Sought-After Skills</h6>
+                        <div className="flex flex-wrap gap-1">
+                          <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Python</span>
+                          <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">JavaScript</span>
+                          <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Java</span>
+                          <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">Cloud Computing</span>
+                          <span className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs">AI/ML</span>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {/* AI for Business Career Data */}
+                  {courseId === 'artificial-intelligence' && (
+                    <>
+                      {/* Key Highlight */}
+                      <div className="bg-white/70 p-4 rounded-lg border border-blue-200">
+                        <h5 className="font-bold text-purple-800 text-lg mb-2">
+                          🎯 Rapidly Growing AI Implementation Market
+                        </h5>
+                        <p className="text-gray-700 text-sm">
+                          AI adoption projected to reach 22% of UK firms by 2024, with £400 billion contribution to UK economy
+                        </p>
+                      </div>
+                      
+                      {/* Salary Info */}
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="text-center bg-white/50 p-3 rounded-lg">
+                          <div className="text-xl font-bold text-green-600">£65,000</div>
+                          <div className="text-xs text-gray-600">AI-Related Roles Average</div>
+                        </div>
+                        <div className="text-center bg-white/50 p-3 rounded-lg">
+                          <div className="text-xl font-bold text-green-600">77.53%</div>
+                          <div className="text-xs text-gray-600">Higher Salaries vs Other Occupations</div>
+                        </div>
+                      </div>
+                      
+                      {/* Industry Growth */}
+                      <div className="bg-white/70 p-3 rounded-lg">
+                        <h6 className="font-semibold text-purple-800 text-sm mb-2">🚀 Industry Growth</h6>
+                        <ul className="text-xs text-gray-700 space-y-1">
+                          <li>• Workers using AI save 122 hours per year (15 working days)</li>
+                          <li>• 40% performance improvement for skilled workers using AI</li>
+                          <li>• AI usage in UK workplaces surged 66% since September 2023</li>
+                        </ul>
+                      </div>
+                      
+                      {/* In-Demand Skills */}
+                      <div className="bg-white/70 p-3 rounded-lg">
+                        <h6 className="font-semibold text-purple-800 text-sm mb-2">🔥 Most Sought-After Skills</h6>
+                        <div className="flex flex-wrap gap-1">
+                          <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">AI Strategy</span>
+                          <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Process Analysis</span>
+                          <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Data Literacy</span>
+                          <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">Change Management</span>
+                          <span className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs">Business Intelligence</span>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {/* Digital Video Production Career Data */}
+                  {courseId === 'latest-tv-video-production' && (
+                    <>
+                      {/* Key Highlight */}
+                      <div className="bg-white/70 p-4 rounded-lg border border-blue-200">
+                        <h5 className="font-bold text-purple-800 text-lg mb-2">
+                          🎯 High-Growth Digital Video Production Market
+                        </h5>
+                        <p className="text-gray-700 text-sm">
+                          UK video production market valued at USD 5.8 billion, growing 27.53% CAGR to USD 66.1 billion by 2033
+                        </p>
+                      </div>
+                      
+                      {/* Salary Info */}
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="text-center bg-white/50 p-3 rounded-lg">
+                          <div className="text-xl font-bold text-green-600">£37,080</div>
+                          <div className="text-xs text-gray-600">Mid-Level Video Producer Average</div>
+                        </div>
+                        <div className="text-center bg-white/50 p-3 rounded-lg">
+                          <div className="text-xl font-bold text-green-600">£136,500</div>
+                          <div className="text-xs text-gray-600">Senior Video Producers</div>
+                        </div>
+                      </div>
+                      
+                      {/* Industry Growth */}
+                      <div className="bg-white/70 p-3 rounded-lg">
+                        <h6 className="font-semibold text-purple-800 text-sm mb-2">🚀 Industry Growth</h6>
+                        <ul className="text-xs text-gray-700 space-y-1">
+                          <li>• 94% of UK adults use YouTube (49 minutes daily)</li>
+                          <li>• Young adults spend 6+ hours daily consuming online content</li>
+                          <li>• Social media is primary news source for 50% of Gen Z</li>
+                        </ul>
+                      </div>
+                      
+                      {/* In-Demand Skills */}
+                      <div className="bg-white/70 p-3 rounded-lg">
+                        <h6 className="font-semibold text-purple-800 text-sm mb-2">🔥 Most Sought-After Skills</h6>
+                        <div className="flex flex-wrap gap-1">
+                          <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Video Editing</span>
+                          <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Digital Marketing</span>
+                          <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Storytelling</span>
+                          <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">Social Media</span>
+                          <span className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs">Mobile Content</span>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {/* AI Video Production Career Data */}
+                  {courseId === 'aimi-ai-video-production' && (
+                    <>
+                      {/* Key Highlight */}
+                      <div className="bg-white/70 p-4 rounded-lg border border-blue-200">
+                        <h5 className="font-bold text-purple-800 text-lg mb-2">
+                          🎯 Emerging AI Video Production Market
+                        </h5>
+                        <p className="text-gray-700 text-sm">
+                          UK AI video market projected to reach USD 2,050.9 million by 2030, growing at 35% CAGR
+                        </p>
+                      </div>
+                      
+                      {/* Salary Info */}
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="text-center bg-white/50 p-3 rounded-lg">
+                          <div className="text-xl font-bold text-green-600">£65,000</div>
+                          <div className="text-xs text-gray-600">AI Video Roles Average</div>
+                        </div>
+                        <div className="text-center bg-white/50 p-3 rounded-lg">
+                          <div className="text-xl font-bold text-green-600">35%</div>
+                          <div className="text-xs text-gray-600">Salary Increase for AI Transition</div>
+                        </div>
+                      </div>
+                      
+                      {/* Industry Growth */}
+                      <div className="bg-white/70 p-3 rounded-lg">
+                        <h6 className="font-semibold text-purple-800 text-sm mb-2">🚀 Industry Growth</h6>
+                        <ul className="text-xs text-gray-700 space-y-1">
+                          <li>• AI video generation market to reach USD 6.5 billion by 2033</li>
+                          <li>• AI roles command 14-23% higher wages than non-AI roles</li>
+                          <li>• Tech workers transitioning to AI see 35% salary increases</li>
+                        </ul>
+                      </div>
+                      
+                      {/* In-Demand Skills */}
+                      <div className="bg-white/70 p-3 rounded-lg">
+                        <h6 className="font-semibold text-purple-800 text-sm mb-2">🔥 Most Sought-After Skills</h6>
+                        <div className="flex flex-wrap gap-1">
+                          <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Python</span>
+                          <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">TensorFlow</span>
+                          <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Video Production</span>
+                          <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">Machine Learning</span>
+                          <span className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs">Data Visualization</span>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {/* Data Analytics Career Data */}
+                  {courseId === 'east-sussex-data-analytics' && (
+                    <>
+                      {/* Key Highlight */}
+                      <div className="bg-white/70 p-4 rounded-lg border border-blue-200">
+                        <h5 className="font-bold text-purple-800 text-lg mb-2">
+                          🎯 Top 5 Most In-Demand Skill Across UK
+                        </h5>
+                        <p className="text-gray-700 text-sm">
+                          According to LinkedIn - Data Analytics consistently ranks in top 5
+                        </p>
+                      </div>
+                      
+                      {/* Salary Info */}
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="text-center bg-white/50 p-3 rounded-lg">
+                          <div className="text-xl font-bold text-green-600">£40,640</div>
+                          <div className="text-xs text-gray-600">Mid-Career Median</div>
+                        </div>
+                        <div className="text-center bg-white/50 p-3 rounded-lg">
+                          <div className="text-xl font-bold text-green-600">55%</div>
+                          <div className="text-xs text-gray-600">Salary Increase in 2-3 Years</div>
+                        </div>
+                      </div>
+                      
+                      {/* Industry Growth */}
+                      <div className="bg-white/70 p-3 rounded-lg">
+                        <h6 className="font-semibold text-purple-800 text-sm mb-2">🚀 Industry Growth</h6>
+                        <ul className="text-xs text-gray-700 space-y-1">
+                          <li>• UK data analytics market: 19.67% CAGR (2025-2033)</li>
+                          <li>• Job postings requiring data skills: +158% since 2013</li>
+                          <li>• Data director roles: +171% increase in demand</li>
+                        </ul>
+                      </div>
+                      
+                      {/* In-Demand Skills */}
+                      <div className="bg-white/70 p-3 rounded-lg">
+                        <h6 className="font-semibold text-purple-800 text-sm mb-2">🔥 Most Sought-After Skills</h6>
+                        <div className="flex flex-wrap gap-1">
+                          <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Excel</span>
+                          <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">SQL</span>
+                          <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Tableau</span>
+                          <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">Python</span>
+                          <span className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs">Power BI</span>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Career Progression Video */}
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Industry Insights</h3>
+              <div className="bg-gray-200 rounded-lg aspect-video flex items-center justify-center mb-4">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-600 font-medium">Career Progression Video</p>
+                  <p className="text-gray-500 text-sm">Coming Soon</p>
+                </div>
+              </div>
+              <p className="text-gray-600">
+                Hear from our industry partner about the current job market, career progression opportunities, 
+                and what employers are really looking for in junior developers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Is This Bootcamp Right for You */}
+      <div className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Is This Bootcamp Right for You?</h2>
+            <p className="text-xl text-gray-600">Find out if you're a good fit for our programme</p>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Target Learners */}
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Perfect for:</h3>
+              <ul className="space-y-4">
+                {course.targetLearners.map((learner, index) => (
+                  <li key={index} className="flex items-start">
+                    <svg className="w-6 h-6 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-gray-700 text-lg">{learner}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Suitability Video - Only show for Software Development */}
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Ready to Take the Next Step?</h3>
+              {courseId === 'software-development' ? (
+                <>
+                  <div className="rounded-lg aspect-video mb-4 overflow-hidden shadow-lg">
+                    <iframe 
+                      width="100%" 
+                      height="100%" 
+                      src="https://www.youtube.com/embed/__qO6uSvI9w" 
+                      title="Is This Bootcamp Right for You? - Course Readiness Assessment"
+                      frameBorder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                      allowFullScreen
+                      className="w-full h-full"
+                    ></iframe>
+                  </div>
+                  <p className="text-gray-600 mb-6">
+                    Not sure if you're ready? Watch this video to understand the prerequisites and 
+                    get tips on how to prepare for the bootcamp.
+                  </p>
+                </>
+              ) : (
+                <div className="bg-gray-100 rounded-lg p-8 mb-6">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <p className="text-gray-600 font-medium">Course Readiness Video</p>
+                    <p className="text-gray-500 text-sm">Coming Soon</p>
+                  </div>
+                </div>
+              )}
+              <button 
+                onClick={() => document.getElementById('hubspot-form-container').scrollIntoView({ behavior: 'smooth' })}
+                className="inline-block bg-gradient-to-r from-green-500 to-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-blue-700 transition-all duration-200"
+              >
+                Apply Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Meet the Partner */}
+      <div className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Meet Our Industry Partners</h2>
+            <p className="text-xl text-gray-600">Learn from industry professionals and employers who've co-designed our curriculum</p>
+          </div>
+          
+          {/* Datacove's Story - Data Analytics (moved to top) */}
+          {courseId === 'east-sussex-data-analytics' && (
+            <div className="grid lg:grid-cols-2 gap-12 mb-16">
+              <div>
+                <div className="flex items-center mb-6">
+                  <img 
+                    src="/datacove-logo.avif" 
+                    alt="Datacove" 
+                    className="w-16 h-16 rounded-full object-cover mr-4"
+                  />
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900">Datacove</h3>
+                    <p className="text-gray-600">Lead Data Analytics Partner</p>
+                    <a href="#" className="text-blue-600 hover:text-blue-800 text-sm">Visit Datacove →</a>
+                  </div>
+                </div>
+                <div className="space-y-4 text-gray-700">
+                  <p>
+                    Datacove brings deep expertise in data analytics and business intelligence, having helped 
+                    organizations transform raw data into actionable insights that drive strategic decision-making 
+                    and business growth.
+                  </p>
+                  <p>
+                    What sets Datacove apart is their practical approach to data analytics education, focusing 
+                    on real-world applications and industry-standard tools that professionals use daily.
+                  </p>
+                  <p>
+                    <strong>Why Datacove partnered with TechNative:</strong> "We wanted to share our practical 
+                    experience and help aspiring data professionals develop the skills that employers actually 
+                    need in today's data-driven business environment."
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <div className="bg-gray-200 rounded-lg aspect-video flex items-center justify-center mb-4">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <p className="text-gray-600 font-medium">Datacove's Story</p>
+                    <p className="text-gray-500 text-sm">Coming Soon</p>
+                  </div>
+                </div>
+                <p className="text-gray-600">
+                  Hear Datacove's journey in data analytics, what brought them to partner with TechNative, 
+                  and their vision for empowering the next generation of data professionals.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Lead Partner - Datacove (for Data Analytics only) */}
+          {courseId === 'east-sussex-data-analytics' ? (
+            <div className="mb-16">
+              <div className="text-center mb-8">
+                <img 
+                  src="/datacove-logo.avif" 
+                  alt="Datacove Logo" 
+                  className="h-16 mx-auto mb-4"
+                />
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Our Lead Curriculum Partner</h3>
+                <p className="text-lg text-gray-600">Brighton-based Data Analytics specialists co-designing and delivering our curriculum</p>
+              </div>
+
+              <div className="grid lg:grid-cols-2 gap-12 mb-12">
+                {/* Jeremy Horne */}
+                <div className="bg-white rounded-lg p-6 shadow-lg">
+                  <div className="flex items-center mb-4">
+                    <img 
+                      src="/JeremyPic.jpeg" 
+                      alt="Jeremy Horne - Founder of Datacove" 
+                      className="w-20 h-20 rounded-full object-cover mr-6"
+                    />
+                    <div>
+                      <h4 className="text-xl font-bold text-gray-900">Jeremy Horne</h4>
+                      <p className="text-gray-600">Founder of Datacove</p>
+                    </div>
+                  </div>
+                  <div className="space-y-3 text-gray-700 text-sm">
+                    <p>
+                      <strong>20+ years of experience</strong> in data analytics, marketing, consumer insights & data visualisation.
+                    </p>
+                    <p>
+                      <strong>National Leadership:</strong> Leads national data meetups across six UK cities and organises the national Python and R Conference, EARL.
+                    </p>
+                    <p>
+                      <strong>Industry Network:</strong> Provides access to cutting-edge insights and networking opportunities through connections with top data professionals from finance, marketing, and technology sectors.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Laura Mawer */}
+                <div className="bg-white rounded-lg p-6 shadow-lg">
+                  <div className="flex items-center mb-4">
+                    <img 
+                      src="/LauraPic.jpeg" 
+                      alt="Laura Mawer - Data Scientist at Datacove" 
+                      className="w-20 h-20 rounded-full object-cover mr-6"
+                    />
+                    <div>
+                      <h4 className="text-xl font-bold text-gray-900">Laura Mawer</h4>
+                      <p className="text-gray-600">Former Maths Teacher turned Data Scientist</p>
+                    </div>
+                  </div>
+                  <div className="space-y-3 text-gray-700 text-sm">
+                    <p>
+                      <strong>Career Transition Expert:</strong> Successfully transitioned from mathematics education to data science, understanding the journey career changers face.
+                    </p>
+                    <p>
+                      <strong>Python Training Lead:</strong> Leads Datacove's Python training programmes and runs the BrightonPy tech community.
+                    </p>
+                    <p>
+                      <strong>Community Builder:</strong> Active in building and supporting the local data science community, providing ongoing mentorship and networking opportunities.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-blue-50 rounded-lg p-6">
+                <h4 className="text-lg font-bold text-gray-900 mb-3">Why Datacove Partners with TechNative</h4>
+                <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-700">
+                  <div>
+                    <p className="mb-3">
+                      <strong>Curriculum Excellence:</strong> Datacove brings deep, industry-level expertise ensuring our curriculum aligns with industry best practices and real-world business needs.
+                    </p>
+                    <p>
+                      <strong>Proven Resources:</strong> Integration of high-quality instructional materials, case studies, and exercises from their existing training programmes.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="mb-3">
+                      <strong>Industry Networks:</strong> Access to national data meetups, conferences, and professional networks across the UK.
+                    </p>
+                    <p>
+                      <strong>Real-World Application:</strong> Exposure to cutting-edge approaches used by top data professionals through guest speakers and masterclasses.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : courseId === 'aimi-ai-video-production' ? (
+            <>
+              {/* Duncan's Story - AI Video Production (moved to top) */}
+              <div className="grid lg:grid-cols-2 gap-12 mb-16">
+                <div>
+                  <div className="flex items-center mb-6">
+                    <img 
+                      src="/duncan-thomsen.png" 
+                      alt="Duncan Thomsen" 
+                      className="w-16 h-16 rounded-full object-cover mr-4"
+                    />
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900">Duncan Thomsen</h3>
+                      <p className="text-gray-600">Lead AI Video Production Partner</p>
+                      <a href="#" className="text-blue-600 hover:text-blue-800 text-sm">Visit AIMI →</a>
+                    </div>
+                  </div>
+                  <div className="space-y-4 text-gray-700">
+                    <p>
+                      Duncan brings cutting-edge expertise in AI-powered video production, having pioneered 
+                      innovative solutions that merge artificial intelligence with creative storytelling. His 
+                      experience spans from technical implementation to creative direction.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : courseId === 'artificial-intelligence' ? (
+            <>
+              {/* AI Potential's Story - AI for Business (moved to top) */}
+              <div className="grid lg:grid-cols-2 gap-12 mb-16">
+                <div>
+                  <div className="flex items-center mb-6">
+                    <img 
+                      src="/ai-potential.jpeg" 
+                      alt="AI Potential Team" 
+                      className="w-16 h-16 rounded-full object-cover mr-4"
+                    />
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900">AI Potential</h3>
+                      <p className="text-gray-600">Lead AI for Business Partner</p>
+                      <a href="#" className="text-blue-600 hover:text-blue-800 text-sm">Visit AI Potential →</a>
+                    </div>
+                  </div>
+                  <div className="space-y-4 text-gray-700">
+                    <p>
+                      AI Potential brings extensive experience in business AI implementation.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : null}
+                    </p>
+                    <p>
+                      What sets Duncan apart is his ability to bridge the gap between complex AI technology 
+                      and practical video production workflows, making advanced tools accessible to creators 
+                      at all levels.
+                    </p>
+                    <p>
+                      <strong>Why Duncan partnered with TechNative:</strong> "I wanted to democratize AI video 
+                      production and help the next generation of creators harness these powerful tools to tell 
+                      their stories more effectively."
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="bg-gray-200 rounded-lg aspect-video flex items-center justify-center mb-4">
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <p className="text-gray-600 font-medium">Duncan's Story</p>
+                      <p className="text-gray-500 text-sm">Coming Soon</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-600">
+                    Hear Duncan's journey in AI video production, what brought him to partner with TechNative, 
+                    and his vision for the future of AI-powered creative content.
+                  </p>
+                </div>
+              </div>
+
+              {/* Duncan Thomsen for AI Video Production */}
+              <div className="bg-gray-50 rounded-lg p-8 mb-16">
+                <div className="flex items-center mb-6">
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900">Meet Our Industry Partner</h3>
+                    <p className="text-lg text-gray-600">AIMI Conference & Creative Director</p>
+                  </div>
+                </div>
+
+              <div className="bg-white rounded-lg p-6 shadow-lg">
+                <div className="flex items-center mb-4">
+                  <img 
+                    src="/DuncanPic.jpeg" 
+                    alt="Duncan Thomsen - Co-founder AIMI Conference & Creative Director" 
+                    className="w-20 h-20 rounded-full object-cover mr-6"
+                  />
+                  <div>
+                    <h4 className="text-xl font-bold text-gray-900">Duncan Thomsen</h4>
+                    <p className="text-gray-600">Co-founder AIMI Conference & Awards, Creative Director</p>
+                  </div>
+                </div>
+                <div className="space-y-3 text-gray-700 text-sm">
+                  <p>
+                    <strong>AI Creative Pioneer:</strong> Co-founder of the first AI creative conference in the UK (AIMI Conference), leading the industry in AI video generation and creative applications.
+                  </p>
+                  <p>
+                    <strong>28+ Years Film & TV Experience:</strong> Award-winning editor with EMMY recognition for 'Ascent of Money' Best Documentary Series, bringing decades of professional production expertise.
+                  </p>
+                  <p>
+                    <strong>Industry Leadership:</strong> Creative Director at 012 Agency providing AI for advertising & commercials, and AIMI Studios producing B'roll and VFX for TV and online channels.
+                  </p>
+                  <p>
+                    <strong>Training & Consultation:</strong> Provides specialized training in AI video generation, harnessing AI to create otherwise impossible art for commercial advertising, TV content, and film.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-blue-50 rounded-lg p-6 mt-6">
+                <h4 className="text-lg font-bold text-gray-900 mb-3">Why Duncan Partners with TechNative</h4>
+                <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-700">
+                  <div>
+                    <p className="mb-3">
+                      <strong>Industry Expertise:</strong> Duncan brings cutting-edge knowledge from the forefront of AI video production, ensuring learners access the latest techniques and industry standards.
+                    </p>
+                    <p>
+                      <strong>Real-World Application:</strong> Through 012 Agency and AIMI Studios, students gain exposure to actual commercial projects and professional workflows.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="mb-3">
+                      <strong>Creative Innovation:</strong> His work in creating "otherwise impossible art" demonstrates the transformative potential of AI in creative industries.
+                    </p>
+                    <p>
+                      <strong>Professional Network:</strong> Access to the AIMI Conference community and industry connections for career development and collaboration opportunities.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : courseId === 'artificial-intelligence' ? (
+            <>
+              {/* AI Potential's Story - AI for Business (moved to top) */}
+              <div className="grid lg:grid-cols-2 gap-12 mb-16">
+                <div>
+                  <div className="flex items-center mb-6">
+                    <img 
+                      src="/ai-potential.jpeg" 
+                      alt="AI Potential Team" 
+                      className="w-16 h-16 rounded-full object-cover mr-4"
+                    />
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900">AI Potential</h3>
+                      <p className="text-gray-600">Lead AI for Business Partner</p>
+                      <a href="#" className="text-blue-600 hover:text-blue-800 text-sm">Visit AI Potential →</a>
+                    </div>
+                  </div>
+                  <div className="space-y-4 text-gray-700">
+                    <p>
+                      AI Potential brings real-world expertise in implementing AI solutions for businesses, 
+                      having helped organizations across various industries harness the power of artificial 
+                      intelligence to transform their operations.
+                    </p>
+                    <p>
+                      What sets AI Potential apart is their practical approach to AI implementation, focusing 
+                      on business value and sustainable adoption rather than just technical complexity.
+                    </p>
+                    <p>
+                      <strong>Why AI Potential partnered with TechNative:</strong> "We wanted to bridge the gap 
+                      between AI theory and practical business application, helping professionals understand 
+                      how to drive real value with AI in their organizations."
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="bg-gray-200 rounded-lg aspect-video flex items-center justify-center mb-4">
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <p className="text-gray-600 font-medium">AI Potential's Story</p>
+                      <p className="text-gray-500 text-sm">Coming Soon</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-600">
+                    Hear AI Potential's journey in business AI implementation, what brought them to partner 
+                    with TechNative, and their vision for democratizing AI in business.
+                  </p>
+                </div>
+              </div>
+
+              {/* AI Potential Partnership for AI for Business */}
+              <div className="mb-16">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Our Lead AI Training Partner</h3>
+                  <p className="text-lg text-gray-600">Brighton-based AI specialists transforming SMEs with practical generative AI training</p>
+                </div>
+
+              <div className="grid lg:grid-cols-2 gap-12 mb-12">
+                {/* Gareth Kemp */}
+                <div className="bg-white rounded-lg p-6 shadow-lg">
+                  <div className="flex items-center mb-4">
+                    <img 
+                      src="/GarethKemp.png" 
+                      alt="Gareth Kemp - Founder of AI Potential" 
+                      className="w-20 h-20 rounded-full object-cover mr-6"
+                    />
+                    <div>
+                      <h4 className="text-xl font-bold text-gray-900">Gareth Kemp</h4>
+                      <p className="text-gray-600">Founder of AI Potential</p>
+                    </div>
+                  </div>
+                  <div className="space-y-3 text-gray-700 text-sm">
+                    <p>
+                      <strong>20+ years of business expertise</strong> in sales, marketing, and strategy development, with deep understanding of SME challenges.
+                    </p>
+                    <p>
+                      <strong>AI Business Integration:</strong> Specializes in helping businesses understand how AI can solve real-world problems with empathy and practical application.
+                    </p>
+                    <p>
+                      <strong>Human-Centered Approach:</strong> Focuses on putting the human element at the center, ensuring AI complements rather than replaces human capabilities.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Mary Kemp */}
+                <div className="bg-white rounded-lg p-6 shadow-lg">
+                  <div className="flex items-center mb-4">
+                    <img 
+                      src="/Mary.jpeg" 
+                      alt="Mary Kemp - Award Winning Co-Founder at AI Potential" 
+                      className="w-20 h-20 rounded-full object-cover mr-6"
+                    />
+                    <div>
+                      <h4 className="text-xl font-bold text-gray-900">Mary Kemp</h4>
+                      <p className="text-gray-600">Award Winning Co-Founder at AI Potential</p>
+                    </div>
+                  </div>
+                  <div className="space-y-3 text-gray-700 text-sm">
+                    <p>
+                      <strong>Innovation Award Winner:</strong> Recognized for transforming SMEs with practical generative AI training and boosting productivity & innovation.
+                    </p>
+                    <p>
+                      <strong>Speaker & Consultant:</strong> Passionate about making AI help businesses become more human, focusing on team growth and connection.
+                    </p>
+                    <p>
+                      <strong>Trusted Partner:</strong> Works side-by-side with clients, breaking down complex goals into clear, achievable steps that reduce stress and get results.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-yellow-50 rounded-lg p-6">
+                <h4 className="text-lg font-bold text-gray-900 mb-3">Why AI Potential Partners with TechNative</h4>
+                <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-700">
+                  <div>
+                    <p className="mb-3">
+                      <strong>Practical AI Implementation:</strong> AI Potential brings real-world experience in helping SMEs adopt AI tools that deliver immediate business value.
+                    </p>
+                    <p>
+                      <strong>Human-Centered Design:</strong> Their approach ensures AI enhances human capabilities rather than replacing them, creating more meaningful work experiences.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="mb-3">
+                      <strong>Proven Results:</strong> Track record of helping businesses transform complex AI strategies into simple, executable actions.
+                    </p>
+                    <p>
+                      <strong>Ongoing Support:</strong> Commitment to building long-term partnerships that support continuous learning and adaptation in the AI landscape.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            /* Pete for Software Development */
+            <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+              <div>
+                <div className="flex items-center mb-6">
+                  <img 
+                    src="/src/assets/pete-f90[86].png" 
+                    alt="Pete - Lead Software Development Partner" 
+                    className="w-20 h-20 rounded-full object-cover mr-6"
+                  />
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900">Pete</h3>
+                    <p className="text-lg text-gray-600">Lead Software Development Partner</p>
+                    <a 
+                      href="#" 
+                      className="text-blue-600 hover:text-blue-800 font-medium"
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      Visit Pete's Website →
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="space-y-4 text-gray-700">
+                  <p>
+                    Pete brings over [X years] of experience in software development, having worked with 
+                    companies ranging from startups to enterprise organizations. His expertise in full-stack 
+                    development and passion for mentoring make him the perfect partner for this bootcamp.
+                  </p>
+                  <p>
+                    What sets Pete apart is his commitment to practical, real-world learning. He believes 
+                    in teaching not just the technical skills, but the problem-solving mindset that makes 
+                    great developers.
+                  </p>
+                  <p>
+                    <strong>Why Pete partnered with TechNative:</strong> "I wanted to create a bridge between 
+                    theoretical knowledge and industry-ready skills. Too many talented people get stuck 
+                    between knowing the basics and being job-ready."
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <div className="bg-gray-200 rounded-lg aspect-video flex items-center justify-center mb-4">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <p className="text-gray-600 font-medium">Pete's Story</p>
+                    <p className="text-gray-500 text-sm">Coming Soon</p>
+                  </div>
+                </div>
+                <p className="text-gray-600">
+                  Hear Pete's journey in tech, what brought him to partner with TechNative, 
+                  and his vision for helping aspiring developers break into the industry.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Industry Partners Section - Only for Software Development */}
+          {courseId === 'software-development' && (
+            <div className="border-t border-gray-200 pt-12">
+              <div className="text-center mb-12">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Employer Partners</h3>
+                <p className="text-lg text-gray-600">Companies who co-designed our curriculum and successfully recruited from our 2024 bootcamp</p>
+              </div>
+
+              <div className="grid lg:grid-cols-2 gap-12 mb-12">
+                {/* DabApps Partner */}
+                <div className="bg-white rounded-lg p-6 shadow-lg">
+                  <div className="flex items-center mb-4">
+                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-blue-600 font-bold text-lg">DA</span>
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold text-gray-900">Cat Baker Bassett</h4>
+                      <p className="text-gray-600">Managing Director, DabApps</p>
+                    </div>
+                  </div>
+                  <div className="rounded-lg aspect-video mb-4 overflow-hidden shadow-lg">
+                    <iframe 
+                      width="100%" 
+                      height="100%" 
+                      src="https://www.youtube.com/embed/hK_fHnPkyV4" 
+                      title="DabApps Partnership Experience - Cat Baker Bassett"
+                      frameBorder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                      allowFullScreen
+                      className="w-full h-full"
+                    ></iframe>
+                  </div>
+                  <p className="text-gray-700 text-sm">
+                    DabApps co-designed our first bootcamp in 2024 to recruit junior developers. 
+                    They hired 2 graduates who are still thriving there today. Cat continues to serve on our advisory board.
+                  </p>
+                </div>
+
+                {/* Certn Partner */}
+                <div className="bg-white rounded-lg p-6 shadow-lg">
+                  <div className="flex items-center mb-4">
+                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-green-600 font-bold text-lg">C</span>
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold text-gray-900">Jamie Matthews</h4>
+                      <p className="text-gray-600">Head of Engineering, Certn</p>
+                    </div>
+                  </div>
+                  <div className="rounded-lg aspect-video mb-4 overflow-hidden shadow-lg">
+                    <iframe 
+                      width="100%" 
+                      height="100%" 
+                      src="https://www.youtube.com/embed/XUJVLcs8_t4" 
+                      title="Certn Partnership Experience - Jamie Matthews"
+                      frameBorder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                      allowFullScreen
+                      className="w-full h-full"
+                    ></iframe>
+                  </div>
+                  <p className="text-gray-700 text-sm">
+                    Certn co-designed our Full Stack Developer bootcamp curriculum and recruited 2 graduates 
+                    from our 2024 cohort who continue to excel in their roles today.
+                  </p>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <p className="text-gray-600 italic">
+                  More industry partners coming soon as we continue to expand our employer network!
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Latest TV Partners Section - Only for Studio Video Production */}
+          {courseId === 'latest-tv-video-production' && (
+            <>
+              {/* Cathy's Story - Video Production for Streaming (moved to top) */}
+              <div className="grid lg:grid-cols-2 gap-12 mb-16">
+                <div>
+                  <div className="flex items-center mb-6">
+                    <img 
+                      src="/cathyPic.jpeg" 
+                      alt="Cathy" 
+                      className="w-16 h-16 rounded-full object-cover mr-4"
+                    />
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900">Cathy</h3>
+                      <p className="text-gray-600">Lead Video Production Partner</p>
+                      <a href="#" className="text-blue-600 hover:text-blue-800 text-sm">Visit Latest TV →</a>
+                    </div>
+                  </div>
+                  <div className="space-y-4 text-gray-700">
+                    <p>
+                      Cathy brings extensive experience in video production for streaming platforms, having 
+                      worked on content that reaches millions of viewers. Her expertise spans from pre-production 
+                      planning to post-production excellence.
+                    </p>
+                    <p>
+                      What sets Cathy apart is her deep understanding of streaming platform requirements and 
+                      audience engagement strategies, combined with technical excellence in video production 
+                      workflows.
+                    </p>
+                    <p>
+                      <strong>Why Cathy partnered with TechNative:</strong> "I wanted to share the real-world 
+                      skills needed to succeed in today's streaming-first video landscape and help creators 
+                      build sustainable careers in digital content."
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="bg-gray-200 rounded-lg aspect-video flex items-center justify-center mb-4">
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <p className="text-gray-600 font-medium">Cathy's Story</p>
+                      <p className="text-gray-500 text-sm">Coming Soon</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-600">
+                    Hear Cathy's journey in video production, what brought her to partner with TechNative, 
+                    and her insights on creating compelling content for streaming platforms.
+                  </p>
+                </div>
+              </div>
+
+              <div className="border-t border-gray-200 pt-12">
+                <div className="text-center mb-12">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Meet Our Partners</h3>
+                  <p className="text-lg text-gray-600">Professional broadcast partners delivering real-world training and career opportunities</p>
+                </div>
+
+              <div className="grid lg:grid-cols-2 gap-12 mb-12">
+                {/* Latest TV Partner */}
+                <div className="bg-white rounded-lg p-6 shadow-lg">
+                  <div className="flex items-center mb-6">
+                    <img 
+                      src="/LatestTV.jpeg" 
+                      alt="Latest TV Logo" 
+                      className="w-16 h-16 rounded-lg mr-4 object-contain bg-red-50 p-2"
+                    />
+                    <div>
+                      <h4 className="text-xl font-bold text-gray-900">Latest TV</h4>
+                      <p className="text-gray-600">Regional broadcaster & creative hub</p>
+                    </div>
+                  </div>
+                  <div className="mb-4">
+                    <p className="text-gray-700 text-sm mb-3">
+                      Latest TV is an award-winning local television station and digital media platform based in Sussex. 
+                      With a focus on creative storytelling, community voices, and regional culture, they produce and air 
+                      hundreds of hours of original content — from news and documentaries to arts, music, and lifestyle programmes.
+                    </p>
+                    <p className="text-gray-700 text-sm">
+                      As a bootcamp partner, Latest TV brings professional production facilities, experienced mentors, 
+                      and real-world opportunities to learners. Their Worthing studio serves as the creative base for our 
+                      Digital Video Skills Bootcamp, offering hands-on training in filming, editing, and content creation — 
+                      with potential pathways into freelance commissions and broadcast inclusion.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Cathy Smith */}
+                <div className="bg-white rounded-lg p-6 shadow-lg">
+                  <div className="flex items-center mb-6">
+                    <img 
+                      src="/cathyPic.jpeg" 
+                      alt="Cathy Smith" 
+                      className="w-16 h-16 rounded-full mr-4 object-cover"
+                    />
+                    <div>
+                      <h4 className="text-xl font-bold text-gray-900">Cathy Smith</h4>
+                      <p className="text-gray-600">Bootcamp Lead & Director, Latest Group CIC</p>
+                    </div>
+                  </div>
+                  <div className="mb-4">
+                    <p className="text-gray-700 text-sm mb-3">
+                      Cathy Smith is the driving force behind the Digital Video Skills Bootcamp at Latest TV. 
+                      With over a decade of experience in creative media and broadcast production, Cathy has led 
+                      some of Sussex's most inclusive and impactful training programmes — helping hundreds of people 
+                      break into the media industry.
+                    </p>
+                    <p className="text-gray-700 text-sm mb-3">
+                      As Director of Latest Group CIC, she's spent years nurturing new talent, creating real-world 
+                      learning experiences, and building pathways into work, freelance projects, and studio roles 
+                      across the local creative scene.
+                    </p>
+                    <p className="text-gray-700 text-sm">
+                      On this bootcamp, Cathy will guide you through every stage of the video production journey — 
+                      from your first camera shoot to your final edited showreel. Her supportive, no-nonsense approach 
+                      helps learners build confidence, find their creative voice, and develop the skills employers are really looking for.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <p className="text-gray-600 italic">
+                  If you're serious about a career in content creation, Cathy's the person you want in your corner.
+                </p>
+              </div>
+            </div>
+          </>
+          )}
+
+      {/* HubSpot Express Interest Form */}
+      <HubSpotForm 
+        title={`Ready to Start Your ${course.title}?`}
+        subtitle={`Express your interest in the ${course.title} and take the first step towards your new career. Our team will be in touch to discuss your options and answer any questions.`}
+      />
+      </div>
+    </div>
+  )
+}
+
