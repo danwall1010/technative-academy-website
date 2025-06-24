@@ -1,0 +1,66 @@
+/* Bootcamps Dropdown Fix - External CSS */
+/* This file adds dropdown functionality without modifying React components */
+
+/* Dropdown container styling */
+.bootcamps-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+  width: 16rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  z-index: 50;
+  display: none;
+}
+
+/* Show dropdown when active */
+.bootcamps-dropdown.show {
+  display: block;
+}
+
+/* Dropdown link styling */
+.bootcamps-dropdown a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #374151;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+/* Remove border from last link */
+.bootcamps-dropdown a:last-child {
+  border-bottom: none;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+/* First link rounded corners */
+.bootcamps-dropdown a:first-child {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+/* Hover effects */
+.bootcamps-dropdown a:hover {
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
+/* Ensure parent has relative positioning */
+.bootcamps-parent {
+  position: relative;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .bootcamps-dropdown {
+    width: 14rem;
+    right: 0;
+    left: auto;
+  }
+}
+
